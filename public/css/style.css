@@ -6,10 +6,10 @@ body{
 button{
   background-color: transparent !important;
   border-color: whitesmoke  !important;
-  padding: 18px !important;
+  padding: 10px !important;
   border-radius: 20px !important;
   margin: 3px 10px !important;
-  font-size: 150% !important;
+  font-size: 110% !important;
   transition-duration: 0.4s !important;
   color: bisque
 }
@@ -21,4 +21,16 @@ input{
 button:hover {
   background-color: whitesmoke !important; 
   color: black !important;
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 768px) {
+ .outer-div{
+  margin:3% 25% 3% 25% !important;
+ }
 }

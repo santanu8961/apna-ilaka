@@ -5,30 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign up</title>
+    <title>Login</title>
 </head>
 
 <body>
     <% include ./script.ejs %>
     <% include ./css.ejs %>
-    <h1 style="margin:5% 0% 0% 0% " class="text-center">Create A account Now!</h1>
+    <h1 style="margin:5% 0% 0% 0% " class="text-center">Login</h1>
     <div class="outer-div" style="margin:3% 35% 3% 35%;-webkit-box-shadow: 16px 13px 7px 2px rgba(72,30,115,0.8);
     -moz-box-shadow: 16px 13px 7px 2px rgba(72,30,115,0.8);
     box-shadow: 16px 13px 7px 2px rgba(72,30,115,0.8);
     ">
     <div class="inner-div" style="margin: 3%; padding: 3%">
         <div class="form-group">
-            <label for="pwd">Name:</label>
-            <input type="text" class="form-control" id="name">
-        </div>
-        <div class="form-group">
             <label for="email">Email address:</label>
             <input type="email" class="form-control" id="email">
-        </div>
-
-        <div class="form-group">
-            <label for="pwd">UserName:</label>
-            <input type="text" class="form-control" id="username">
         </div>
 
         <div class="form-group">
@@ -36,15 +27,10 @@
             <input type="password" class="form-control" id="password">
         </div>
 
-        <div class="form-group">
-            <label for="pwd">Confirm Password:</label>
-            <input type="password" class="form-control" id="confirm_password">
-        </div>
-
-        <button type="button" id="signup" class="btn">Sign Up</button>
+        <button type="button" id="signup" class="btn">Login</button>
     </div>
 </div>
-    <script src="js/sign_up.js"></script>
+    <script src="js/login.js"></script>
 </body>
 
 </html>
