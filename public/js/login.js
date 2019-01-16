@@ -12,14 +12,15 @@ console.log(`test`)
                     data: data,
                     dataType: "JSON",
                     success: function (response) {
-                        console.log(`response`,response);
-                        // console.log(response)
+                        // console.log(`response`,response);
+                        console.log(response)
                         if(response.passed == 1){
-                            // alert(response.info);
-                            localStorage.setItem("sessionKey", Math.random().toString(36).slice(2));
-                            // location.href = `/login`;
+                            // // alert(response.info);
+                            // localStorage.setItem("sessionKey", Math.random().toString(36).slice(2));
+                            // // location.href = `/login`;
+                            location.href = `/timeline`;
                         }else{
-                            alert(response)
+                            alert(`username or password invalid`)
                         }
                     }
                 });

@@ -36,6 +36,7 @@ router.post('/login_service', function(req, res) {
       console.log(`password : `,doc[0].password);
       if(bcrtypt.compareSync(req.body.password,doc[0].password)){
         req.session.isLoggedin = true;
+        req.session.email = doc[0].email
         res.send({passed:1});
       }else{
         res.send({passed:0});
@@ -69,9 +70,17 @@ router.post('/signup_service',(req,res)=>{
   });
 });
 
-router.get('/apppage',isLoggedIn,(req,res)=>{
-  console.log(req.session)
-  res.send('<h1>Hi There</h1>');
+router.get('/timeline',isLoggedIn,(req,res)=>{
+  console.log(req.session);
+  user.find({email:req.session.email},(err,doc)=>{
+    if(doc.length == 0){
+      res.render('timeline',{user:{}});    
+    }
+    else{
+      res.render('timeline',{user:doc[0]});
+    }
+  })
+  
 })
 
 

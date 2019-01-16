@@ -15,10 +15,14 @@
 
     <div class="button-holder">
         <p class="text-center">
-            <button type="button" class="btn">Log in</button>
-            <button type="button" class="btn">Sign up</button>
+            <button type="button" id="login_page" class="btn">Log in</button>
+            <button type="button" id="signup_page" class="btn">Sign up</button>
         </p>
     </div>
 </body>
+<script>
+    $('#signup_page').on('click',function(){  location.href = `/signup`;  });
+    $('#login_page').on('click',function(){  location.href = `/login`;  });
+</script>
 
 </html>
