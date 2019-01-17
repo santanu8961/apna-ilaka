@@ -31,7 +31,8 @@ router.post('/login_service', function(req, res) {
   user.find({email:req.body.email},(err,doc)=>{
     console.log(doc)
     if(doc.length == 0){
-      res.send(`user does not exist`)
+      console.log(`0`);
+      res.send({passed:0});
     }else{
       console.log(`password : `,doc[0].password);
       if(bcrtypt.compareSync(req.body.password,doc[0].password)){

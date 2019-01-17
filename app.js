@@ -12,9 +12,14 @@ var session = require('express-session')
 
 var mongoose = require('mongoose');
 
+
 mongoose.connect('mongodb://localhost/ApnaIlaka',{ useNewUrlParser: true })
 
 var app = express();
+
+app.listen(3001,"0.0.0.0",()=>{
+    console.log(`Apna Ilaka Started...`)
+})
 
 app.set('trust proxy', 1) // trust first proxy
 

@@ -4,9 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/timeline.css">
+    <% include ./css.ejs %>
+    
     <title>Welcome <%= user.name %>  </title>
 </head>
 <body>
-    <h1>Welcome <%= user.name %> </h1>
+    <% include ./header.ejs %>
+
+        <div id="content">
+                <h1>Timeline</h1>
+              
+                <ul class="timeline">
+                    <li class="event">
+                        <h2 style="padding:5px 0px">Create a Post :</h2>
+                        <textarea style="color: black; border: none; box-shadow: 3px 3px 5px 6px rgba(48, 22, 22, 0.24); background-color: #755197b4" name="createpost" id="" cols="30" rows="5"></textarea>
+                    </li>
+                  <li class="event" data-date="65Million B.C.">
+                    <h3>Dinosaurs Roamed the Earth</h3>
+                    <p>RAWWWWWWRRR 🐢🦂</p>
+                  </li>
+                  <li class="event" data-date="2005">
+                    <h3>Creative Component Launched</h3>
+                    <p>"We can be all things to all people!" 📣</p>    
+                  </li>
+                  <li class="event" data-date="2009">
+                    <h3>Squareflair was Born</h3>
+                    <p></p> <p>"We can be all things to Squarespace users!" 📣</p>    
+                  </li>
+                  <li class="event" data-date="November 15, 2018">
+                    <h3>Squareflair Today</h3>
+                    
+                    <p>"We design and build from scratch!" 📣 <br>When we say <em><strong>100% custom</strong></em> we mean it— and we build all sites on the Squarespace Developer platform.<p/>
+              <p>Did you know that all of our pixels are hand-forged from the rarest of subpixels grown and harvested in the <em>Nerd Forest</em>? <br>🤜💥🤛</p>
+                    
+                    <p><strong>Our success can be measured by lives and brands enhanced by nearly nine years of 100% Squarespace-focused service!</strong></p>    
+                  </li>
+                </ul>
+              </div>
+              <% include ./script.ejs %>
+
+              <script>
+                $('textarea').on('click',function(){
+                    CKEDITOR.replace( 'createpost',
+{
+height: '100px',
+toolbar : 'Basic'
+} );
+setTimeout(()=>{$('#cke_31').click();},800) ;
+                })
+             </script>
+
+            <script src="js/timeline.js"></script>
 </body>
 </html>
+
