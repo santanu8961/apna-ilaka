@@ -10,5 +10,6 @@ module.exports = connection.model('Status/posts', {
     name:String,
     email: String,
     post:String,
+    likes:[String],
     date:{type:Date,default:Date.now()}
 },'Status/posts');

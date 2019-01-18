@@ -31,7 +31,41 @@ router.get('/login', function(req, res) {
 router.get('/logout',(req,res)=>{
   req.session.destroy();
   res.redirect('/');
-})
+});
+
+
+
+router.post('/addlikes',(req,res)=>{
+  console.log(req.body);
+  console.log(req.session.username);
+  status.findById(req.body.post_id,(err,doc)=>{
+
+    if(err){
+      console.log(err);
+    }else{
+      var likeArray = doc.likes;
+      // console.log(likeArray);
+      if(likeArray.includes(req.session.username)){
+        console.log('included');
+        for(var i = likeArray.length - 1; i >= 0; i--) {
+          if(likeArray[i] === req.session.username) {
+             likeArray.splice(i, 1);
+          }
+      }
+      }else {
+        likeArray.push(req.session.username);
+      }
+      setTimeout(()=>{
+        status.findOneAndUpdate({_id:req.body.post_id},{ $set: { likes: likeArray }},(err,post)=>{
+          console.log(likeArray);
+          res.send({likes:likeArray})
+        })
+      },500)
+    }
+  })
+});
+
+
 
 router.post('/login_service', function(req, res) {
   user.find({email:req.body.email},(err,doc)=>{
@@ -43,7 +77,8 @@ router.post('/login_service', function(req, res) {
       console.log(`password : `,doc[0].password);
       if(bcrtypt.compareSync(req.body.password,doc[0].password)){
         req.session.isLoggedin = true;
-        req.session.email = doc[0].email
+        req.session.email = doc[0].email;
+        req.session.username = doc[0].username;
         res.send({passed:1});
       }else{
         res.send({passed:0});

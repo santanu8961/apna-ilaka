@@ -23,5 +23,27 @@ $(document).ready(function () {
             }
             
         })
-    })    
+    })  ;
+    
+    $('.add-like').on('click',function(){
+        var self = this;
+       var data = {
+            post_id : $(this).closest('li').find('.post-id').html()
+       };
+       console.log(data);
+
+       $.ajax({
+        type: "POST",
+        url: "/addlikes",
+        data: data,
+        dataType: "JSON",
+    }).done( function (response) {
+        console.log(response.likes.toString())
+       $(self).closest('li').find('.like-number').html(response.likes.toString());
+        
+    });
+    });
+
+
+   
 });

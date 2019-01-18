@@ -48,13 +48,18 @@
       <% for(var i = 0; i<posts.length ; i++){ %>
 
       <li class="event" data-date="<%= convert(posts[i].date.toString())%>">
-        <h3>
-          <%=  posts[i].username%>
-        </h3>
+        <h3 class="post-username"><%=posts[i].username%></h3>
+        <p style="display: none" class="post-id"><%= posts[i]._id %></p>
         <p>
           <%- posts[i].post %>
         </p>
-        <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+        <% if(posts[i].likes.includes(user.username)){ %>
+          <i onclick="myFunction(this)" class="color fa fa-thumbs-up add-like"></i>
+       <% } else { %>
+        <i onclick="myFunction(this)" class=" fa fa-thumbs-up add-like"></i>
+        <% } %>
+       
+        <span style="font-size: 1.2rem;"><span class="like-number"><%= posts[i].likes.toString() %></span> people like this</span>
       </li>
 
       <% } %>
