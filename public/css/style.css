@@ -82,7 +82,17 @@ button:hover {
 }
 
 
+.fa {
+  font-size: 35px !important;
+  cursor: pointer;
+  user-select: none;
+  
+}
+.color {color:rgb(223, 219, 35)}
 
+/* .fa:hover {
+  color: rgba(73, 73, 167, 0.63);
+} */
 
 
 
@@ -104,5 +114,8 @@ button:hover {
   
   .header-right {
     float: none;
+  }
+  .header a {
+    font-size: 12px
   }
 }

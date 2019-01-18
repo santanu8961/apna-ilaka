@@ -5,10 +5,10 @@ var Schema = mongoose.Schema;
 var connection=mongoose.createConnection("mongodb://localhost/ApnaIlaka",{ useNewUrlParser: true });
 
 
-module.exports = connection.model('user', {
+module.exports = connection.model('Status/posts', {
     username: String,
     name:String,
     email: String,
-    password: String,
+    post:String,
     date:{type:Date,default:Date.now()}
-},'user');
+},'Status/posts');

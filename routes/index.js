@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var user = require('../models/user');
+var status = require('../models/status');
 var bcrtypt = require('bcrypt');
 
 var isLoggedIn = (req,res,next)=>{
@@ -26,6 +27,11 @@ router.get('/signup', function(req, res) {
 router.get('/login', function(req, res) {
   res.render('login');
 });
+
+router.get('/logout',(req,res)=>{
+  req.session.destroy();
+  res.redirect('/');
+})
 
 router.post('/login_service', function(req, res) {
   user.find({email:req.body.email},(err,doc)=>{
@@ -74,15 +80,35 @@ router.post('/signup_service',(req,res)=>{
 router.get('/timeline',isLoggedIn,(req,res)=>{
   console.log(req.session);
   user.find({email:req.session.email},(err,doc)=>{
-    if(doc.length == 0){
-      res.render('timeline',{user:{}});    
-    }
-    else{
-      res.render('timeline',{user:doc[0]});
+    status.find({}).sort({date: -1}).exec((err, posts) =>{
+
+      console.log(posts);
+
+      if(doc.length == 0){
+        res.render('timeline',{user:{},posts:{}});    
+      }
+      else{
+        res.render('timeline',{user:doc[0],posts:posts});
+      }
+
+    })
+   
+  });
+  
+});
+
+router.post('/createpost',(req,res)=>{
+  console.log(req.body);
+  status.insertMany([req.body],(err,doc)=>{
+    if(err){
+      res.send({isUploaded:false});
+    }else{
+      res.send({isUploaded:true});
     }
   })
-  
-})
+});
+
+
 
 
 

@@ -242,5 +242,10 @@
        padding: 15px;
 
    }
+
+   .timeline .event:before {
+    right:0;
+  }
+
    }
   
