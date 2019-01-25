@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $('.home').addClass('active');
     $('#createpost').on('click',function(){
         var post = CKEDITOR.instances['#status'].getData()
 

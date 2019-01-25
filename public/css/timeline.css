@@ -191,6 +191,14 @@
     font-weight: 100;
     font-size: 1.4em;
   }
+
+  img{
+    margin:5% 10%;
+    position: relative;
+    height: 80% !important;
+    width:80% !important;
+  }
+  
   .timeline h2,
   .timeline h3 {
     font-family: 'Saira', sans-serif;
@@ -242,10 +250,15 @@
        padding: 15px;
 
    }
+   .timeline .event:after {
+    left: -23.85px;
+   }
 
    .timeline .event:before {
     right:0;
   }
+
+ 
 
    }
   

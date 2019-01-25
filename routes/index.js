@@ -33,6 +33,24 @@ router.get('/logout',(req,res)=>{
   res.redirect('/');
 });
 
+router.get('/ownposts',(req,res)=>{
+  user.find({email:req.session.email},(err,doc)=>{
+    status.find({email:req.session.email}).sort({date: -1}).exec((err, posts) =>{
+      console.log(doc.length);
+      console.log(posts);
+
+      if(doc.length == 0){
+        res.render('ownposts',{user:{},posts:{}});    
+      }
+      else{
+        res.render('ownposts',{user:doc[0],posts:posts});
+      }
+
+    })
+   
+  });
+})
+
 
 
 router.post('/addlikes',(req,res)=>{
